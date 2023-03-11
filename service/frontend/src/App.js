@@ -6,6 +6,8 @@ import ProjectList from "./components/Project.js";
 import TODOList from "./components/TODO.js";
 import Footer from "./components/Footer";
 import Menu from "./components/Menu";
+import {HashRouter,Route, BrowserRouter} from "react-router-dom";
+
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -43,13 +45,17 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <Menu/>
-                < UsersList users={this.state.users}/>
-                < ProjectList projects={this.state.project}/>
-                < TODOList todos={this.state.todo}/>
+                <BrowserRouter>
 
+                    <Menu/>
 
-                <Footer/>
+                    <Route exact path='/' component={() => < UsersList users={this.state.users}/>}/>
+                    <Route exact path='/project' component={() => < ProjectList projects={this.state.project}/>}/>
+                    <Route exact path='/todo' component={() => < TODOList todos={this.state.todo}/>}/>
+
+                    <Footer/>
+
+                </BrowserRouter>
             </div>
         );
     }

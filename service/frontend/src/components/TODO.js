@@ -8,6 +8,9 @@ const TODOItem = ({todo}) => {
                 {todo.id}
             </td>
             <td>
+                {todo.project}
+            </td>
+            <td>
                 {todo.text}
             </td>
             <td>
@@ -17,13 +20,10 @@ const TODOItem = ({todo}) => {
                 {todo.updated_date}
             </td>
             <td>
-                {todo.is_active}
-            </td>
-            <td>
-                {todo.project}
-            </td>
-            <td>
                 {todo.user}
+            </td>
+            <td>
+                {todo.is_active}
             </td>
         </tr>
     )
@@ -37,6 +37,9 @@ const TODOList = ({todos}) => {
                 ID
             </th>
             <th>
+                Project
+            </th>
+            <th>
                 Text
             </th>
             <th>
@@ -46,13 +49,10 @@ const TODOList = ({todos}) => {
                 Updated_date
             </th>
             <th>
-                Is_active
-            </th>
-            <th>
-                Project
-            </th>
-            <th>
                 User
+            </th>
+            <th>
+                Is_active
             </th>
             {todos.map((todo) => <TODOItem todo={todo} />)}
 
