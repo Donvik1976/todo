@@ -1,15 +1,16 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import {useParams} from "react-router-dom";
+import project from "./Project";
 
 
-const ProjectItem = ({project}) => {
+const OneProjectItem = ({project}) => {
     return(
         <tr>
             <td>
                 {project.id}
             </td>
             <td>
-                <Link to={`/project/${project.id}`}>{project.name}</Link>
+                {project.name}
             </td>
             <td>
                 {project.repo_url}
@@ -21,8 +22,9 @@ const ProjectItem = ({project}) => {
     )
 }
 
-
-const ProjectList = ({projects}) => {
+const OneListProject = ({projects}) => {
+    let{id} = useParams();
+    const filter_item = projects.filter((project) => project.id === parseInt(id));
     return(
         <table>
             <th>
@@ -37,9 +39,9 @@ const ProjectList = ({projects}) => {
             <th>
                 Users
             </th>
-            {projects.map((project) => <ProjectItem project={project} />)}
-
+            {filter_item.map((project) => <OneProjectItem project={project} />)}
         </table>
     )
 }
-export default ProjectList;
+
+export default OneListProject

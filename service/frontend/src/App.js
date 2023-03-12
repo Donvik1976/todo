@@ -4,9 +4,11 @@ import './App.css';
 import UsersList from "./components/Users.js";
 import ProjectList from "./components/Project.js";
 import TODOList from "./components/TODO.js";
-import Footer from "./components/Footer";
-import Menu from "./components/Menu";
-import {HashRouter,Route, BrowserRouter} from "react-router-dom";
+import Footer from "./components/Footer.js";
+import Menu from "./components/Menu.js";
+import OneListProject from "./components/OneProject.js";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
+import NotFound404 from "./components/NotFound404.js";
 
 class App extends React.Component {
     constructor(props) {
@@ -46,12 +48,15 @@ class App extends React.Component {
         return (
             <div>
                 <BrowserRouter>
-
                     <Menu/>
+                    <Switch>
+                        <Route exact path='/' component={() => < UsersList users={this.state.users}/>}/>
+                        <Route exact path='/project' component={() => < ProjectList projects={this.state.project}/>}/>
+                        <Route exact path='/todo' component={() => < TODOList todos={this.state.todo}/>}/>
+                        <Route path='/project/:id' component={() => <OneListProject projects={this.state.project}/>} />
 
-                    <Route exact path='/' component={() => < UsersList users={this.state.users}/>}/>
-                    <Route exact path='/project' component={() => < ProjectList projects={this.state.project}/>}/>
-                    <Route exact path='/todo' component={() => < TODOList todos={this.state.todo}/>}/>
+                        <Route component={NotFound404}/>
+                    </Switch>
 
                     <Footer/>
 

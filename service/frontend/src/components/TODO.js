@@ -23,7 +23,7 @@ const TODOItem = ({todo}) => {
                 {todo.user}
             </td>
             <td>
-                {todo.is_active}
+                {todo.is_active ? 'True' : 'False'}
             </td>
         </tr>
     )
