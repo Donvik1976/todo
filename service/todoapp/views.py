@@ -17,7 +17,7 @@ class ProjectModelViewSet(ModelViewSet):
     serializer_class = ProjectModelSerializer
     renderer_classes = [JSONRenderer, BrowsableAPIRenderer]
     filterset_class = ProjectFilter
-    # pagination_class = ProjectLimitOffsetPagination
+    pagination_class = ProjectLimitOffsetPagination
 
 
 class TODODestroyModelMixin(DestroyModelMixin):
@@ -35,4 +35,4 @@ class TODOModelViewSet(CreateModelMixin, ListModelMixin, UpdateModelMixin, Retri
     serializer_class = TODOModelSerializer
     renderer_classes = [JSONRenderer, BrowsableAPIRenderer]
     filterset_class = TODOFilter
-    # pagination_class = TODOLimitOffsetPagination
+    pagination_class = TODOLimitOffsetPagination
