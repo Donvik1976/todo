@@ -49,7 +49,8 @@ INSTALLED_APPS = [
     'users',
     'todoapp',
     'django_filters',
-    'drf_yasg'
+    'drf_yasg',
+    'graphene_django',
 ]
 
 MIDDLEWARE = [
@@ -165,4 +166,9 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 100,
 
     'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.QueryParameterVersioning',
+
+}
+
+GRAPHENE = {
+    'SCHEMA': 'service.schema.schema'
 }
