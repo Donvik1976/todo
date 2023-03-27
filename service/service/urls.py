@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework import permissions
 
 from rest_framework.routers import DefaultRouter
 from rest_framework.authtoken import views
@@ -26,6 +27,22 @@ from rest_framework_simplejwt.views import (
 
 from users.views import UserModelViewSet
 from todoapp.views import ProjectModelViewSet, TODOModelViewSet
+
+
+from drf_yasg import openapi
+from drf_yasg.views import get_schema_view
+
+
+schema_view = get_schema_view(
+    openapi.Info(
+        title='Library',
+        default_version='v2',
+        contact=openapi.Contact(email='admin@admin.com'),
+        license=openapi.License(name='MT')
+    ),
+    public=True,
+    # permission_classes=(permissions.IsAdminUser,),
+)
 
 router = DefaultRouter()
 router.register('users', UserModelViewSet)
@@ -40,4 +57,8 @@ urlpatterns = [
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
+
+    path('swagger/', schema_view.with_ui('swagger')),
+    path('swagger<str:format>/', schema_view.without_ui()),
+    path('redoc/', schema_view.with_ui('redoc')),
 ]
