@@ -1,8 +1,7 @@
 import React from "react";
-import {Link} from "react-router-dom";
 
 
-const TODOItem = ({todo, deleteTODO}) => {
+const TODOItem = ({todo}) => {
     return(
         <tr>
             <td>
@@ -26,15 +25,12 @@ const TODOItem = ({todo, deleteTODO}) => {
             <td>
                 {todo.is_active ? 'True' : 'False'}
             </td>
-            <td>
-                <button onClick={() => deleteTODO(todo.id)} type="button">Delete</button>
-            </td>
         </tr>
     )
 }
 
 
-const TODOList = ({todos, deleteTODO}) => {
+const TODOList = ({todos}) => {
     return(
         <table>
             <th>
@@ -58,10 +54,7 @@ const TODOList = ({todos, deleteTODO}) => {
             <th>
                 Is_active
             </th>
-            <th></th>
-            {todos.map((todo) => <TODOItem todo={todo} deleteTODO={deleteTODO} />)}
-
-            <Link to='/todo/create'>Create</Link>
+            {todos.map((todo) => <TODOItem todo={todo} />)}
 
         </table>
     )
