@@ -4,7 +4,7 @@ import React from "react";
 class TODOForm extends React.Component{
     constructor(props) {
         super(props);
-        this.state = {'project': 0, 'text': '', 'user': 0}
+        this.state = {'project': props.project[0].id, 'text': '', 'user': 0}
     }
 
 
@@ -28,8 +28,8 @@ class TODOForm extends React.Component{
             <form onSubmit={(event) => this.handleSubmit(event)}>
                 <div className="form-group">
                     <label htmlFor="project">project</label>
-                    <input type="number" name="project" placeholder="project"
-                           value={this.state.project} onChange={(event) => this.handleChange(event)}/>
+                    <select name="project" placeholder="project" onChange={(event) => this.handleChange(event)}>
+                            {this.props.project.map((item)=><option value={item.id}>{item.name}</option>)} </select>
                 </div>
                 <div>
                     <label htmlFor="text">text</label>
@@ -48,4 +48,3 @@ class TODOForm extends React.Component{
 }
 
 export default TODOForm
-
