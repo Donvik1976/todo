@@ -154,7 +154,8 @@ class App extends React.Component {
                         <Route exact path='/todo' component={() => < TODOList todos={this.state.todo}
                                                                               deleteTODO={(id) => this.deleteTODO(id)}/>}/>
                         <Route exact path='/todo/create' component={()=>
-                            <TODOForm createTODO={(project, text, user)=>this.createTODO(project, text, user)}/>}></Route>
+                            <TODOForm project={this.state.project}
+                                      createTODO={(project, text, user)=>this.createTODO(project, text, user)}/>}></Route>
 
                         <Route path='/project/:id' component={() => <OneListProject projects={this.state.project}/>} />
                         <Route exact path='/login' component={() => <LoginForm
