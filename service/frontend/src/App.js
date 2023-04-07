@@ -89,14 +89,14 @@ class App extends React.Component {
         const cookies = new Cookies()
         cookies.set('token', token)
         cookies.set('username', username)
-        this.setState({'token':token, 'username':username}, ()=>this.load_data())
+        this.setState({'token': token, 'username': username}, ()=>this.load_data())
         console.log(this.state.token)
     }
 
 
     get_token(username, password){
         axios.post('http://127.0.0.1:8000/api-token-auth/',
-            {'username':username, 'password': password})
+            {'username': username, 'password': password})
             .then(response => {
                 this.set_token(response.data['token'], username)
             }).catch(error => alert('Не верный логин или пароль'));
@@ -127,7 +127,7 @@ class App extends React.Component {
         const cookies = new Cookies();
         const token = cookies.get('token')
         const username = cookies.get('username')
-        this.setState({'token':token, 'username':username}, ()=>this.load_data())
+        this.setState({'token': token, 'username': username}, ()=>this.load_data())
     }
 
     componentDidMount() {
