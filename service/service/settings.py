@@ -32,8 +32,8 @@ CSP_IMG_SRC = ("'self'", "http://127.0.0.1:8000")
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
-    "http://localhost:8000",
-    "http://127.0.0.1:8000",
+    "http://localhost:3001",
+    "http://127.0.0.1:3001",
 
 ]
 
@@ -48,14 +48,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'users',
+    'todoapp',
     'corsheaders',
     'rest_framework.authtoken',
     'rest_framework_simplejwt',
-    'users',
-    'todoapp',
     'django_filters',
     'drf_yasg',
     'graphene_django',
+
 ]
 
 MIDDLEWARE = [
@@ -93,10 +94,21 @@ WSGI_APPLICATION = 'service.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'db',
+        'PASSWORD': '123',
+        'USER': 'admin',
+        'HOST': 'db',
+        'PORT': '5432',
     }
 }
 

@@ -8,11 +8,11 @@ import Footer from "./components/Footer.js";
 import Menu from "./components/Menu.js";
 import OneListProject from "./components/OneProject.js";
 import LoginForm from "./components/Auth.js";
-import {BrowserRouter, Link, Route, Switch} from "react-router-dom";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
 import NotFound404 from "./components/NotFound404.js";
-import Cookies from "universal-cookie";
 import ProjectForm from "./components/ProjectForm.js";
 import TODOForm from "./components/TODOForm.js";
+import Cookies from "universal-cookie";
 
 
 class App extends React.Component {
